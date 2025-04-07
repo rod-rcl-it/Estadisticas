@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IT Rodenstock</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <iframe id="rotador" src=""></iframe>
+
+  <script>
+    const urls = [
+      "http://180.1.3.230/nagios4//map.php?host=all",
+      "http://RCL-IT017.group.local/public/mapshow.htm?id=2051&mapid=Infrastructure",
+      "http://180.1.3.230/cgi-bin/nagios4/status.cgi?hostgroup=all&style=hostdetail&sorttype=2&sortoption=8",
+      "http://180.1.3.230/cgi-bin/nagios4/history.cgi?host=all"
+    ];
+
+    let index = 0;
+    const iframe = document.getElementById('rotador');
+
+    function cambiarUrl() {
+      iframe.src = urls[index];
+      index = (index + 1) % urls.length;
+    }
+
+    cambiarUrl(); 
+    setInterval(cambiarUrl, 10000); // Cambiar cada 10 segundos
+  </script>
+</body>
+</html>
